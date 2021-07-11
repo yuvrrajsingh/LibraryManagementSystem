@@ -1,0 +1,32 @@
+{% extends 'library/base.html' %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block style%}
+{% endblock %}
+
+{% block content %}
+ <div class="container">
+      <div class="row">
+          <div class="col-sm-10 shadow p-5 offset-sm-1">
+              <h2 class="text-center mb-5"><b>{{book.title}}</b></h2>
+              <img src="{{book.pic.url}}" alt="img" class="img-fluid img-thumbnail float-right" width="150" height="150">
+              <p>Author: {{book.author}}</p>
+              <p>Language: {{book.language}}</p>
+              <p>Genre: {{book.genre}}</p>
+              <p>No of Available Copies: {{book.available_copies}}</p>
+              <a href="{% url 'issue' book.id %}" class="btn btn-success mb-3">Issue</a>
+              <h4>Summary</h4><hr>
+              <p>{{book.summary}}</p>
+              <div class="text-center">
+                  <a href="/" class="btn btn-danger">Back To Library</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+{% endblock %}
+        {% block javascript %}
+
+        {% endblock %}

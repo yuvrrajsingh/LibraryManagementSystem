@@ -1,0 +1,40 @@
+{% extends 'library/base.html' %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block style%}
+{% endblock %}
+
+{% block content %}
+<center>
+    <form class="form" id="searchform" action="" method="get">
+        <div class="form-group">
+            <input type="text" class="col-5  form-control-lg" placeholder="enter book title or something " name="q"
+                   type="text"/>
+            <button type="button" class="btn btn-success form-control-lg" onclick="searchform.submit()">Search</button>
+        </div>
+    </form>
+</center>
+{% if books %}
+<div class="row mx-auto">
+    {% for book in books %}
+    <div class="mx-3 col-md-4 col-lg-3 mb-4 shadow p-2 mb-4 bg-white rounded">
+        <div class="card mx-auto text-center ">
+            <a href="{% url 'book_detail' book.id %}">
+                <img class="card-img-top" src="{{ book.pic.url }}" alt="Sample Title" height="400px" width="400px">
+                <div class="card-body">
+                    <h4 class="card-title"> {{ book.title }}</h4>
+                </div>
+            </a>
+            <p>Author - {{book.author}}</p>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<h3>No books here </h3>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
